@@ -107,10 +107,12 @@
 
 #define SO_ZEROCOPY		60
 
+#ifdef CONFIG_KNOX_NCM
 // KNOX NPA - START
 #define SO_SET_DOMAIN_NAME 1000
 #define SO_SET_DNS_UID 1001
 #define SO_SET_DNS_PID 1002
 // KNOX NPA - END
+#endif
 
 #endif /* __ASM_GENERIC_SOCKET_H */

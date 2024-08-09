@@ -36,10 +36,12 @@ struct sip_length {
 	int data_len[SIP_LIST_ELEMENTS];
 };
 
+#ifdef CONFIG_KNOX_NCM
 // KNOX NPA - START
 #define PROCESS_NAME_LEN_NAP	128
 #define DOMAIN_NAME_LEN_NAP	255
 // KNOX NPA - END
+#endif
 /* per conntrack: protocol private data */
 union nf_conntrack_proto {
 	/* insert conntrack proto private data here */
@@ -128,6 +130,7 @@ struct nf_conn {
 	/* Storage reserved for other modules, must be the last member */
 	union nf_conntrack_proto proto;
 
+	#ifdef CONFIG_KNOX_NCM
 	// KNOX NPA - START
 	/* The number of application layer bytes sent by the socket */
 	__u64   knox_sent;
@@ -159,6 +162,7 @@ struct nf_conn {
 	/* Atomic variable indicating end of intermediate flow */
 	atomic_t intermediateFlow;
 	// KNOX NPA - END
+	#endif
 };
 
 static inline struct nf_conn *
