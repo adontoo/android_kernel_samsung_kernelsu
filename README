@@ -1,18 +1,19 @@
-Linux kernel
-============
+How to build:
+  Note: 
+    make sure your python version is 2.x
+    if your python version is 3.x , run this command to install python2 and symbolic link python2.7 to python:
+      sudo apt-get install python2 -y
+      sudo ln /usr/bin/python2.7 /usr/bin/python
 
-This file was moved to Documentation/admin-guide/README.rst
+  make sure you know your divece's code and android version, then clone this git like:
+    git clone https://github.com/adontoo/android_kernel_samsung_kernelsu.git -b bloomq/13 bloomq/13
+  run build_kernel.sh from kernel source rood dir like:
+    ./build_kernel.sh
 
-Please notice that there are several guides for kernel developers and users.
-These guides can be rendered in a number of formats, like HTML and PDF.
+  you will get a kernel image from kernel source dir(out/arch/arm64/boot/Image)when kernel build finish.
+    unpack boot.img from firmware or pull it from your phone, rename Image file to boot.img-kernel
+    and replace it to unpack boot.img dir: split_img/boot.img-kernel, repack boot.img at last.
 
-In order to build the documentation, use ``make htmldocs`` or
-``make pdfdocs``.
+  go to twrp flash the repacked boot.img or tar the boot.img and flash it from odin tool.
 
-There are various text files in the Documentation/ subdirectory,
-several of them using the Restructured Text markup notation.
-See Documentation/00-INDEX for a list of what is contained in each file.
-
-Please read the Documentation/process/changes.rst file, as it contains the
-requirements for building and running the kernel, and information about
-the problems which may result by upgrading your kernel.
+  have fun!
